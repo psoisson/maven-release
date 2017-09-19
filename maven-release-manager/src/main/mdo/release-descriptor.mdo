@@ -486,6 +486,16 @@
         </field>
 
         <field>
+          <name>workItem</name>
+          <version>3.0.0+</version>
+          <type>String</type>
+          <!--  no default value to support work item  -->
+          <description>
+            The work item used by some source control management tools, e.g. Jazz.
+          </description>
+        </field>
+
+        <field>
           <name>localCheckout</name>
           <version>2.0.0+</version>
           <type>boolean</type>

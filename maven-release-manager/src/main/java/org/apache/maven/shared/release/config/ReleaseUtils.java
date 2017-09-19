@@ -101,6 +101,7 @@ public class ReleaseUtils
         mergeInto.setRemoteTagging( toBeMerged.isRemoteTagging() );
         mergeInto.setLocalCheckout( toBeMerged.isLocalCheckout() );
         mergeInto.setPushChanges( toBeMerged.isPushChanges() );
+        mergeInto.setWorkItem( mergeOverride( mergeInto.getWorkItem(), toBeMerged.getWorkItem() ) );
         mergeInto.setWaitBeforeTagging( toBeMerged.getWaitBeforeTagging() );
 
         // If the user specifies versions, these should be override the existing versions
@@ -176,6 +177,7 @@ public class ReleaseUtils
             remoteTaggingStr == null ? false : Boolean.valueOf( remoteTaggingStr ).booleanValue() );
         String pushChanges = properties.getProperty( "pushChanges" );
         releaseDescriptor.setPushChanges( pushChanges == null ? true : Boolean.valueOf( pushChanges ).booleanValue() );
+        releaseDescriptor.setWorkItem( properties.getProperty( "workItem" ) );
 
         loadResolvedDependencies( properties, releaseDescriptor );
 

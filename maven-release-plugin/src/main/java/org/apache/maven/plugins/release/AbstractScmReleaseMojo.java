@@ -95,6 +95,14 @@ public abstract class AbstractScmReleaseMojo
     private boolean pushChanges = true;
 
     /**
+     * The work item to be associated with the commit. For use in Jazz SCM Provider.
+     *
+     * @since 3.0.0+
+     */
+    @Parameter( defaultValue = "[maven-release-plugin] ", property = "workItem" )
+    private String workItem;
+
+    /**
      * Add a new or overwrite the default implementation per provider. 
      * The key is the scm prefix and the value is the role hint of the
      * {@link org.apache.maven.scm.provider.ScmProvider}.
@@ -141,6 +149,7 @@ public abstract class AbstractScmReleaseMojo
         descriptor.setScmCommentPrefix( scmCommentPrefix );
 
         descriptor.setPushChanges( pushChanges );
+        descriptor.setWorkItem( workItem );
 
         return descriptor;
     }

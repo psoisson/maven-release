@@ -115,6 +115,7 @@ public abstract class AbstractScmCommitPhase
                                                                             releaseEnvironment.getSettings() );
 
             repository.getProviderRepository().setPushChanges( releaseDescriptor.isPushChanges() );
+            repository.getProviderRepository().setWorkItem( releaseDescriptor.getWorkItem() );
 
             provider = scmRepositoryConfigurator.getRepositoryProvider( repository );
         }

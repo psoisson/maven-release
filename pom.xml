@@ -30,7 +30,7 @@
 
   <groupId>org.apache.maven.release</groupId>
   <artifactId>maven-release</artifactId>
-  <version>3.0.0-SNAPSHOT</version>
+  <version>3.0.0.VBMS.P1</version>
   <packaging>pom</packaging>
 
   <name>Maven Release</name>
@@ -46,25 +46,65 @@
      -->
   </modules>
 
-  <scm>
-    <connection>scm:svn:http://svn.apache.org/repos/asf/maven/release/trunk</connection>
-    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/maven/release/trunk</developerConnection>
-    <url>http://svn.apache.org/viewvc/maven/release/trunk</url>
-  </scm>
-  <issueManagement>
-    <system>jira</system>
-    <url>https://issues.apache.org/jira/browse/MRELEASE</url>
-  </issueManagement>
-  <ciManagement>
-    <system>Jenkins</system>
-    <url>https://builds.apache.org/job/maven-release/</url>
-  </ciManagement>
+  <repositories>
+    <repository>
+      <snapshots>
+        <!--DO NOT SET TO FALSE.  This allows for people to download from nexus-->
+        <enabled>true</enabled>
+      </snapshots>
+      <id>aide-repo</id>
+      <name>AIDE Nexus Repo</name>
+      <url>https://code-tools.aide.oit.va.gov/nexus/content/groups/public</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <id>aid-repo</id>
+      <name>AIDE Nexus Plugin Repo</name>
+      <url>https://code-tools.aide.oit.va.gov/nexus/content/repositories/core-releases</url>
+      <layout>default</layout>
+    </pluginRepository>
+  </pluginRepositories>
+
   <distributionManagement>
-    <site>
-      <id>apache.website</id>
-      <url>scm:svn:https://svn.apache.org/repos/infra/websites/production/maven/components/${maven.site.path}</url>
-    </site>
+    <repository>
+      <id>aide-repo</id>
+      <name>AIDE Nexus Release Repo</name>
+      <url>https://code-tools.aide.oit.va.gov/nexus/content/repositories/core-releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>aide-repo</id>
+      <name>AIDE Nexus Snapshot Repo</name>
+      <url>https://code-tools.aide.oit.va.gov/nexus/content/repositories/core-snapshots</url>
+    </snapshotRepository>
   </distributionManagement>
+
+  <!--<scm>-->
+    <!--<connection>scm:svn:http://svn.apache.org/repos/asf/maven/release/trunk</connection>-->
+    <!--<developerConnection>scm:svn:https://svn.apache.org/repos/asf/maven/release/trunk</developerConnection>-->
+    <!--<url>http://svn.apache.org/viewvc/maven/release/trunk</url>-->
+  <!--</scm>-->
+  <!--<issueManagement>-->
+    <!--<system>jira</system>-->
+    <!--<url>https://issues.apache.org/jira/browse/MRELEASE</url>-->
+  <!--</issueManagement>-->
+  <!--<ciManagement>-->
+    <!--<system>Jenkins</system>-->
+    <!--<url>https://builds.apache.org/job/maven-release/</url>-->
+  <!--</ciManagement>-->
+  <!--<distributionManagement>-->
+    <!--<site>-->
+      <!--<id>apache.website</id>-->
+      <!--<url>scm:svn:https://svn.apache.org/repos/infra/websites/production/maven/components/${maven.site.path}</url>-->
+    <!--</site>-->
+  <!--</distributionManagement>-->
   
   <contributors>
     <contributor>
@@ -85,7 +125,7 @@
   </contributors>
 
   <properties>
-    <scmVersion>1.9.4</scmVersion>
+    <scmVersion>1.9.5</scmVersion>
     <mavenVersion>2.2.1</mavenVersion>
     <maven.site.path>maven-release-archives/maven-release-LATEST</maven.site.path>
   </properties>
